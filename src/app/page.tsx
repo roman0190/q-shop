@@ -22,14 +22,14 @@ export default function Home() {
         } else {
           // Filter only men's and women's clothing
           const filtered = allProducts.filter(
-            (product: any) =>
+            (product: Product) =>
               product.category === "men's clothing" ||
               product.category === "women's clothing"
           );
 
           setProducts(filtered);
         }
-      } catch (err) {
+      } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);
         } else {

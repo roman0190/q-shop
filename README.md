@@ -1,109 +1,175 @@
 # QShop - Mini E-commerce SPA
 
-A small e-commerce Single Page Application (SPA) built with Next.js and TypeScript. This project was created as an assessment task for Qtec Solution Limited.
+## Overview
 
-## Features
+QShop is a modern, responsive e-commerce Single Page Application built with Next.js 15 and TypeScript. The application features a clean design with full cart functionality, product listings, detailed product pages, and a complete checkout flow.
 
-- Responsive design that works on all devices
-- Product listing with images, titles, and prices
-- Product detail pages with comprehensive information
-- Cart functionality with add/remove/update quantity
-- Cart sidebar that slides in/out
-- Checkout modal with form submission
+## 🌟 Features
 
-## Pages
+- **Responsive Design** - Works seamlessly on all devices (mobile, tablet, desktop)
+- **Product Catalog** - Browse clothing items with filtering for men's and women's categories
+- **Product Details** - Comprehensive product information with ratings and reviews
+- **Cart Sidebar** - Sliding cart interface with Add/remove items, adjust quantities, view totals
+- **Checkout Process** - Complete order form with validation
+- **State Management** - React Context API for global cart state
+- **Loading States** - Smooth loading indicators throughout the app
+- **Error Handling** - Graceful error handling and user feedback
 
-1. **Home Page**
-   - List of products (minimum 6)
-   - Each product shows image, title, price, and "Add to Cart" button
-   - Click on a product to view details
+## 🛠️ Tech Stack
 
-2. **Product Detail Page**
-   - Full product information
-   - Product image, title, description, price, and category
-   - "Add to Cart" button
+- **Frontend Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **State Management**: React Context API
+- **HTTP Client**: [Axios](https://axios-http.com/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **Ratings**: [React Stars](https://github.com/ekeric13/react-stars)
+- **Image Optimization**: Next.js Image component
 
-3. **Cart Sidebar**
-   - Slides in/out from the side
-   - Shows all added products
-   - Allows increasing/decreasing quantities
-   - Displays total amount
-   - "Checkout" button
+## 🚀 Getting Started
 
-4. **Checkout Modal**
-   - Appears after clicking "Checkout" button
-   - Form with name, email, and address fields
-   - Submit button to simulate order placement
+### Prerequisites
 
-## Technologies Used
+- Node.js (v18 or later)
+- npm, yarn, or pnpm
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- React Context API for state management
+### Installation
 
-## Getting Started
-
-First, clone the repository:
-
+1. **Clone the repository:**
 ```bash
-git clone [repository-url]
+git clone <repository-url>
 cd qshop-frontend
 ```
 
-Install dependencies:
-
+2. **Install dependencies:**
 ```bash
 npm install
 # or
 yarn install
+# or
+pnpm install
 ```
 
-Run the development server:
-
+3. **Run the development server:**
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+4. **Open your browser:**
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   ├── loading.tsx        # Loading component
+│   ├── not-found.tsx      # 404 page
+│   ├── page.tsx           # Home page
+│   └── product/[id]/      # Dynamic product pages
+├── components/            # Reusable UI components
+│   ├── CartProduct.tsx    # Individual cart item
+│   ├── CartSidebar.tsx    # Sliding cart interface
+│   ├── CheckoutModal.tsx  # Checkout form modal
+│   ├── FeatureSection.tsx # Featured collections
+│   ├── Footer.tsx         # Site footer
+│   ├── HeroSection.tsx    # Landing hero section
+│   ├── Navbar.tsx         # Navigation bar
+│   ├── ProductCard.tsx    # Product grid item
+│   └── ProductsSection.tsx # Product listing section
+├── context/               # React Context providers
+│   └── CartContext.tsx    # Cart state management
+└── types/                 # TypeScript type definitions
+    ├── CartContextType.ts # Cart context interface
+    ├── CheckoutFormData.ts # Checkout form interface
+    └── Product.ts         # Product data interface
+```
 
-## Build for Production
+## 🎯 Key Features Details
+
+### Cart Management
+- **Add to Cart**: Products can be added with a single click
+- **Quantity Control**: Increase/decrease item quantities
+- **Remove Items**: Delete items from cart
+- **Persistent State**: Cart state maintained across navigation
+- **Real-time Updates**: Live cart count and total calculation
+
+### Product Catalog
+- **API Integration**: Fetches products from [Fake Store API](https://fakestoreapi.com/)
+- **Category Filtering**: Shows only men's and women's clothing
+- **Rating Display**: Star ratings with review counts
+- **Best Seller Tags**: Dynamic badges based on rating count
+
+### Checkout Process
+- **Form Validation**: Complete checkout form with field validation
+- **User Information**: Name, email, address, phone collection
+- **Order Summary**: Total calculation with item breakdown
+- **Success Feedback**: Order confirmation with cart clearing
+
+## 🔧 Available Scripts
 
 ```bash
-npm run build
-# or
-yarn build
+# Development
+npm run dev          # Start development server
+
+# Production
+npm run build        # Build for production
+npm run start        # Start production server
+
+# Code Quality
+npm run lint         # Run ESLint
 ```
 
-## Deployment
+## 📱 Responsive Design
 
-This project can be easily deployed on Vercel or Netlify.
+The application is fully responsive with breakpoints for:
+- **Mobile**: < 640px
+- **Tablet**: 640px - 1024px  
+- **Desktop**: > 1024px
 
-## License
+## 🎨 Design System
 
-This project is created for assessment purposes only.
+- **Primary Color**: Blue (#2890f1)
+- **Background**: Light gray (#f5f5f5)
+- **Text**: Dark gray (#1f1f1f)
+- **Cards**: White with subtle shadows
+- **Borders**: Light gray with rounded corners
 
-## Learn More
+## 🔄 State Management
 
-To learn more about Next.js, take a look at the following resources:
+Uses React Context API with the following providers:
+- **CartContext**: Manages cart items, quantities, and total calculations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📋 Type Safety
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Full TypeScript implementation with interfaces for:
+- [`Product`](src/types/Product.ts) - Product data structure
+- [`CartContextType`](src/types/CartContextType.ts) - Cart context interface  
+- [`CheckoutFormData`](src/types/CheckoutFormData.ts) - Checkout form structure
 
-## Deploy on Vercel
+## 🐛 Error Handling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **API Errors**: Graceful handling of network failures
+- **404 Pages**: Custom not-found page
+- **Form Validation**: Real-time validation with user feedback
+- **Loading States**: Skeleton loading for better UX
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+This project was created for demonstration purposes only.
+
+## 🤝 Contributing
+
+This is a demonstration project. Feel free to fork and modify for your own use.
+
+---
+
+**Live Demo**: []  
+**Author**: [Roman Howladar]  
+**Created**: 2025

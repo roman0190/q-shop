@@ -7,13 +7,19 @@ import axios from "axios";
 import ReactStars from "react-stars";
 import { FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import { Product as ProductType } from "@/types/Product";
+import { useCart } from "@/context/CartContext";
+import { useParams } from "next/navigation";
 
-const Product = ({ params }: { params: { id: string } }) => {
+const Product = () => {
   const [product, setProduct] = useState<ProductType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { addToCart, cartItems } = useCart();
 
-  const productId = params.id;
+  // Use the useParams hook
+  const params = useParams();
+  const productId = parseInt(params.id as string, 10);
+  const isInCart = cartItems.some((item) => item.id === product?.id);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -24,6 +30,7 @@ const Product = ({ params }: { params: { id: string } }) => {
         setProduct(response.data);
       } catch (err) {
         setError("Failed to load product");
+        console.log(err)
       } finally {
         setIsLoading(false);
       }
@@ -61,7 +68,6 @@ const Product = ({ params }: { params: { id: string } }) => {
         >
           <FaArrowLeft className="mr-2" /> Back to shop
         </Link>
-
         <div className="bg-white rounded shadow-md overflow-hidden">
           <div className="md:flex">
             {/* Product Image */}
@@ -77,13 +83,11 @@ const Product = ({ params }: { params: { id: string } }) => {
                 />
               </div>
             </div>
-
             {/* Product Details */}
             <div className="md:w-1/2 p-8">
               <h1 className="text-2xl font-bold text-gray-800 mb-4">
                 {product.title}
               </h1>
-
               <div className="flex items-center mb-4">
                 <div className="flex mr-2">
                   <ReactStars
@@ -99,55 +103,33 @@ const Product = ({ params }: { params: { id: string } }) => {
                   ({product.rating.count} reviews)
                 </span>
               </div>
-
               <div className="mb-6">
                 <span className="text-[#2890f1] text-3xl font-bold">
                   ${product.price.toFixed(2)}
                 </span>
               </div>
-
               <div className="mb-6">
                 <p className="text-gray-600">{product.description}</p>
               </div>
-
-              <div className="mb-6">
-                <div className="flex items-center">
-                  <span className="text-gray-700 mr-4">Quantity:</span>
-                  <div className="flex border border-gray-300">
-                    <button
-                      className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-black"
-                      //   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      min="1"
-                      value={1}
-                      //   value={quantity}
-                      //   onChange={(e) =>
-                      //     setQuantity(parseInt(e.target.value) || 1)
-                      //   }
-                      className="w-12 text-center border-x border-gray-300 py-1 text-black"
-                    />
-                    <button
-                      className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-black"
-                      //   onClick={() => setQuantity(quantity + 1)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-
               <div className="flex gap-4">
-                <button className="bg-black text-white px-6 py-3 rounded-sm font-bold flex items-center justify-center flex-1 hover:bg-gray-800">
-                  <FaShoppingCart className="mr-2" /> Add to Cart
+                <button
+                  onClick={() => addToCart(product)}
+                  disabled={isInCart}
+                  className={`px-6 py-3 rounded-sm font-bold flex items-center justify-center flex-1
+                    ${
+                      isInCart
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-black text-white hover:bg-gray-800"
+                    }`}
+                >
+                  <FaShoppingCart className="mr-2" />
+                  {isInCart ? "Already in Cart" : "Add to Cart"}
                 </button>
               </div>
-
               <div className="mt-8 pt-6 border-t border-gray-200">
-                <h3 className="font-medium mb-2">Product Details:</h3>
+                <h3 className="font-medium mb-2 text-black">
+                  Product Details:
+                </h3>
                 <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
                   <li>
                     Category:{" "}
