@@ -1,9 +1,5 @@
 # QShop - Mini E-commerce SPA
 
-## 🎨 Design Inspiration
-
-This project is inspired by the [Simple Fashion E-Commerce Figma Design](https://www.figma.com/design/lOFuK94wVdgCY0QVOXpX3a/Simple-Fashion-E-Commerce--Elmore---Community-?node-id=2-2&t=QhJZ4Oc6Ke53CZ4H-0) from the Figma Community. The design has been adapted and implemented using modern web technologies while maintaining the clean, minimalist aesthetic of the original concept.
-
 ## Overview
 
 QShop is a modern, responsive e-commerce Single Page Application built with Next.js 15 and TypeScript. The application features a clean design with full cart functionality, product listings, detailed product pages, and a complete checkout flow.
@@ -30,6 +26,11 @@ QShop is a modern, responsive e-commerce Single Page Application built with Next
 - **Ratings**: [React Stars](https://github.com/ekeric13/react-stars)
 - **Image Optimization**: Next.js Image component
 
+## 🎨 Design Inspiration
+
+This project is inspired by the [Simple Fashion E-Commerce Figma Design](https://www.figma.com/design/lOFuK94wVdgCY0QVOXpX3a/Simple-Fashion-E-Commerce--Elmore---Community-?node-id=2-2&t=QhJZ4Oc6Ke53CZ4H-0) from the Figma Community. The design has been adapted and implemented using modern web technologies while maintaining the clean, minimalist aesthetic of the original concept.
+
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -42,7 +43,7 @@ QShop is a modern, responsive e-commerce Single Page Application built with Next
 1. **Clone the repository:**
 ```bash
 git clone <repository-url>
-cd qshop-frontend
+cd qshop
 ```
 
 2. **Install dependencies:**
