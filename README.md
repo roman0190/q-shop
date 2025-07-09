@@ -43,7 +43,7 @@ This project is inspired by the [Simple Fashion E-Commerce Figma Design](https:/
 1. **Clone the repository:**
 ```bash
 git clone <repository-url>
-cd qshop
+cd q-shop
 ```
 
 2. **Install dependencies:**
